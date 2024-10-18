@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "./src/index.js", // Correctly point to the entry file
+      "use": "@vercel/node" // Use @vercel/node for Node.js functions
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/src/index.js" // Adjust the destination for routing
+    }
+  ]
+}
