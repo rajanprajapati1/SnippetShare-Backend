@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "./src/index.js", // Correctly point to the entry file
-      "use": "@vercel/node" // Use @vercel/node for Node.js functions
+      "use": "@now/node"
     }
   ],
   "routes": [
