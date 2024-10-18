@@ -4,8 +4,14 @@
         "src" : "./src/index.js",
         "use" : "@vercel/node"
     }],
-    "rewrites": [{
-        "source" : "/(.*)",
-        "destination" :"/"
-    }]
+     "routes": [
+    {
+      "src": "/api/(.*)", // Match all API routes
+      "dest": "/src/index.js" // Forward to your Express server
+    },
+    {
+      "src": "/(.*)", // Match all other routes
+      "dest": "/src/index.js" // Forward to your Express server (if needed)
+    }
+  ]
 }
