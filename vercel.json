@@ -1,17 +1,15 @@
 {
-    "version" : 2 ,
-    "builds" : [{
-        "src" : "./src/index.js",
-        "use" : "@vercel/node"
-    }],
-     "routes": [
+  "version": 2,
+  "builds": [
     {
-      "src": "/api/(.*)", // Match all API routes
-      "dest": "/src/index.js" // Forward to your Express server
-    },
+      "src": "/src/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
     {
-      "src": "/(.*)", // Match all other routes
-      "dest": "/src/index.js" // Forward to your Express server (if needed)
+      "src": "/(.*)",
+      "dest": "/src/index.js"
     }
   ]
 }
