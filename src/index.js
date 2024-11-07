@@ -48,18 +48,18 @@ async function startServer() {
 }
 
 
-// cron.schedule('* * * * *', async () => { // Runs every minute
-//   const expirationDate = new Date(Date.now() - 24 * 60 * 60 * 1000); // 24 hours ago
-//   try {
-//     const result = await Session.deleteMany({ createdAt: { $lt: expirationDate } });
-//     if (result.deletedCount > 0) {
-//       io.emit('sessionDeleted', result.deletedCount); // Notify clients about the deletion
-//     }
-//     console.log(`${result.deletedCount} old sessions deleted.`);
-//   } catch (error) {
-//     console.error("Error deleting old sessions:", error);
-//   }
-// });
+cron.schedule('* * * * *', async () => { // Runs every minute
+  const expirationDate = new Date(Date.now() - 24 * 60 * 60 * 1000); // 24 hours ago
+  try {
+    const result = await Session.deleteMany({ createdAt: { $lt: expirationDate } });
+    if (result.deletedCount > 0) {
+      io.emit('sessionDeleted', result.deletedCount); // Notify clients about the deletion
+    }
+    console.log(`${result.deletedCount} old sessions deleted.`);
+  } catch (error) {
+    console.error("Error deleting old sessions:", error);
+  }
+});
 
 app.get("/",(req,res)=>{
   res.status(200).json({msg:"Snippet Share v1 Now 👻"})
