@@ -17,7 +17,7 @@ const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*", // Allow requests from any origin
+    origin: "https://snippetshareio.netlify.app/",
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -45,6 +45,10 @@ cron.schedule('* * * * *', async () => { // Runs every minute
     console.error("Error deleting old sessions:", error);
   }
 });
+
+app.get("/",(req,res)=>{
+  res.status(200).json({msg:"Snippet Share v1 Now 👻"})
+})
 
 
 io.on("connection", (socket) => {
